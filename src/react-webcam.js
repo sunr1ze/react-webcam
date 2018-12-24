@@ -298,6 +298,8 @@ export default class Webcam extends Component {
   }
 
   render() {
+    const style = this.props.mirror ? Object.assign({}, this.props.style, { transform: 'scaleX(-1)' }) : this.props.style;
+
     return (
       <video
         autoPlay
@@ -307,7 +309,7 @@ export default class Webcam extends Component {
         muted={this.props.audio}
         className={this.props.className}
         playsInline
-        style={this.props.mirror ? { ...this.props.style, transform: 'scaleX(-1)' } : this.props.style}
+        style={style}
         ref={(ref) => {
           this.video = ref;
         }}
